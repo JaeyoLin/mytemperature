@@ -16,6 +16,9 @@
         width: 100%;
         min-height: 400px;
       }
+      .c3-region-0 {
+        fill: red;
+      }
     </style>
   </head>
   <body>
@@ -25,10 +28,33 @@
 
       var xData = ['x'];
       var yDate = ['temper'];
+      var isMc = [];
+
+      var lastTmp = null;
+      var startDate = "";
+      var endDate = "";
       if (records != undefined) {
         for (i = 0 ; i < records.length ; i++) {
+          if (lastTmp !== null) {
+            if (!lastTmp && records[i].isMc) {
+              startDate = records[i].date;
+            }
+            if (lastTmp && !records[i].isMc) {
+              endDate = records[i-1].date;
+              isMc.push({start: startDate, end: endDate});
+              startDate = "";
+              endDate = "";
+            } else if (i === records.length - 1 && lastTmp) {
+              endDate = records[i].date;
+              isMc.push({start: startDate, end: endDate});
+              startDate = "";
+              endDate = "";
+            }
+          }
           xData.push(records[i].date);
           yDate.push(records[i].temper);
+
+          lastTmp = records[i].isMc;
         }
       }
 
@@ -49,7 +75,8 @@
               multiline: false
             }
           }
-        }
+        },
+        regions: isMc
       });
     </script>
 
