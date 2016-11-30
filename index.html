@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Temperature</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link href="./theme/c3.min.css" rel="stylesheet" type="text/css">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="./script/c3.min.js"></script>
+    <script src="./script/data.js"></script>
+    <style type="text/css">
+      .chart {
+        width: 100%;
+        min-height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chart"></div>
+
+    <script>
+
+      var xData = ['x'];
+      var yDate = ['temper'];
+      if (records != undefined) {
+        for (i = 0 ; i < records.length ; i++) {
+          xData.push(records[i].date);
+          yDate.push(records[i].temper);
+        }
+      }
+
+      var chart = c3.generate({
+        data: {
+          x: 'x',
+          columns: [
+            xData,
+            yDate
+          ]
+        },
+        axis: {
+          x: {
+            type: 'timeseries',
+            tick: {
+              format: '%m-%d',
+              rotate: 90,
+              multiline: false
+            }
+          }
+        }
+      });
+    </script>
+
+  </body>
+</html>
