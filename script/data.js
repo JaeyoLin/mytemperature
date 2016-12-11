@@ -27,5 +27,10 @@ var records = [
   {date: '2016-12-04', temper: 36.29, isMc: false},
   {date: '2016-12-05', temper: 36.21, isMc: false},
   {date: '2016-12-06', temper: 36.19, isMc: false},
+  {date: '2016-12-07', temper: 36.36, isMc: false},
+  {date: '2016-12-08', temper: 36.15, isMc: false},
+  {date: '2016-12-09', temper: 36.14, isMc: false},
+  {date: '2016-12-10', temper: 36.50, isMc: false},
+  {date: '2016-12-11', temper: 36.27, isMc: false},
 ];
 
